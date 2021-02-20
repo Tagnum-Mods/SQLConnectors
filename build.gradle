@@ -14,8 +14,8 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 version = '1.0'
-group = 'com.tagnumelite.dynmapcompact' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'dynmapcompact'
+group = 'com.tagnumelite.sqlconnectors' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'sqlconnectors'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
@@ -50,7 +50,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                dynmapcompact {
+                sqlconnectors {
                     source sourceSets.main
                 }
             }
@@ -72,7 +72,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                dynmapcompact {
+                sqlconnectors {
                     source sourceSets.main
                 }
             }
@@ -94,10 +94,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'dynmapcompact', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'sqlconnectors', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                dynmapcompact {
+                sqlconnectors {
                     source sourceSets.main
                 }
             }
@@ -114,13 +114,10 @@ configurations {
 }
 
 dependencies {
-    // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
-    // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
-    // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.16.5-36.0.42'
 
-    extraLibs 'org.xerial:sqlite-jdbc:3.21.0.1'
-    extraLibs 'mysql:mysql-connector-java:8.0.13'
+    extraLibs 'org.xerial:sqlite-jdbc:3.34.0'
+    extraLibs 'mysql:mysql-connector-java:8.0.23'
 
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
@@ -135,12 +132,12 @@ jar {
     }
     manifest {
         attributes([
-            "Specification-Title": "dynmapcompact",
-            "Specification-Vendor": "tagnumelite",
+            "Specification-Title": "sqlconnectors",
+            "Specification-Vendor": "TagnumElite",
             "Specification-Version": "1", // We are version 1 of ourselves
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"tagnumelite",
+            "Implementation-Vendor" :"TagnumElite",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
